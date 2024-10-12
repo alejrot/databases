@@ -171,7 +171,7 @@ Resumiendo:
 Recomendado: [base de datos Northwind para SQLite](https://en.wikiversity.org/wiki/Database_Examples/Northwind/SQLite)
 
 
-
+### alias
 
 Alias para los campos:
 ```sql
@@ -805,6 +805,12 @@ La tabla intermedia se relacionará n:1 con la primera tabla y 1:n con la segund
 ## VER ESQUEMA MARTIN
 
 
+
+
+
+
+<!-- 
+
 ## Normalizacion
 https://youtu.be/DFg1V-rO6Pg?t=20343
 
@@ -893,6 +899,14 @@ Se previenen las *dependencias de union* entre atributos
 Para diseñar bases de datos pequeñas utilizar la tercera forma normal suele ser suficiente. En cambio para bases de datos muy grandes y con necesidad de escalamiento es recomendable implementar la cuarta o la quinta forma normal.
 
 
+ -->
+
+
+
+
+
+<!-- 
+
 ## Indices
 
 Los índices son una herramienta auxiliar que permite mejorar los tiempos de consulta para ciertos campos de interés. Los índices se crean con la sintaxis: 
@@ -954,6 +968,11 @@ CREATE INDEX fecha	  ON Orders (OrderDate);
 DROP INDEX cantidad ;
 DROP INDEX fecha	;
 ```
+ -->
+
+
+
+<!-- 
 
 # Vistas
 
@@ -977,6 +996,11 @@ Eliminación de vistas:
 DROP VIEW IF EXISTS Productos_simplificados
 ```
 La condición 'IF EXISTS' es recomendable para evitar posibles errores en caso que la tabla ya haya sido eliminada.
+ -->
+
+
+
+<!-- 
 
 ## Bloqueos y Transacciones
 
@@ -1022,7 +1046,12 @@ COMMIT
 ```
 Las transacciones son indispensables para trabajar sobre las bases de datos desde programas externos.
 
+ -->
 
+
+
+
+<!-- 
 
 ## Procedimientos almacenados (Stored Procedures)
 
@@ -1034,8 +1063,12 @@ SQLite **no soporta** procedimientos almacenados debido a su tipo de armado, a d
 ## User Defined Functions (UDF)
 
 Las funciones definidas por el usuario son funciones que se diseñan en el lenguaje anfitrión del programa cliente y se transmiten al gestor de la base de datos. Es entonces el gestor el encargado de ejecutar la función indicada por el programa cliente y devolver el resultado en caso de ser requerido.
+ -->
 
 
+
+
+<!--  
 
 ## Uso en Python
 
@@ -1237,7 +1270,13 @@ Una opcion es abrir creando un contexto con la *cláusula **with***, de la misma
 
 https://youtu.be/DFg1V-rO6Pg?t=24731
 
+-->
 
+
+
+
+
+<!-- 
 
 ## Diferencias entre gestores
 
@@ -1276,3 +1315,5 @@ https://youtu.be/DFg1V-rO6Pg?t=24731
 
 1 - Se adaptan las consultas para crear el formato de tablas en el nuevo gestor de base de datos;
 2 - Para migrar los datos se recomienda exportar cada tabla de la base de datos en archivos CSV e importarlos con el nuevo gestor.
+
+ -->

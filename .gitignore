@@ -1,4 +1,13 @@
+site      
+.cache    
+.venv
+venv
 
+*.webp
+*.png
+*.jpg
+*.jpeg
+*.bmp
 
 
 *.db

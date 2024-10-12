@@ -1,8 +1,8 @@
-[base de datos Northwind para SQLite](https://en.wikiversity.org/wiki/Database_Examples/Northwind/SQLite)
 
-Texto disponible con licencia Creative Commons BY-SA
+-- Base de datos NorthWind adaptada a SQLite
+-- extraída de Wikiversity
+-- Licencia Creative Commons BY-SA 4.0
 
-```sql
 -- Either:
 --     Open DB Browser for SQLite.
 --     Create a new database named Northwind.db.
@@ -1038,4 +1038,3 @@ INSERT INTO OrderDetails VALUES(515,10442,54,80);
 INSERT INTO OrderDetails VALUES(516,10442,66,60);
 INSERT INTO OrderDetails VALUES(517,10443,11,6);
 INSERT INTO OrderDetails VALUES(518,10443,28,12);
-```

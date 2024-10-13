@@ -27,7 +27,7 @@ tags:
 
 
 
-## Bloqueos y Transacciones
+# Bloqueos y Transacciones
 
 Los **bloqueos** son un mecanismo preventivo de las bases de datos que impiden múltiples consultas simultáneas. Esto permite asegurar la integridad de los datos y prevenir tanto errores de lectura como de escritura.
 

@@ -1,7 +1,9 @@
 
 -- Base de datos NorthWind adaptada a SQLite
--- extraída de Wikiversity
--- Licencia Creative Commons BY-SA 4.0
+-- extraída de Wikiversity:
+-- https://en.wikiversity.org/wiki/Database_Examples/Northwind/SQLite
+-- Licencia Creative Commons BY-SA 4.0:
+-- https://creativecommons.org/licenses/by-sa/4.0/
 
 -- Either:
 --     Open DB Browser for SQLite.

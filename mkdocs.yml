@@ -50,7 +50,7 @@ theme:
       sqlalchemy: simple/sqlalchemy
       mysql: simple/mysql
       postgresql: simple/postgresql
-      # mariadb: simple/mariadb
+      mariadb: simple/mariadb
       # mariadb: simple/mariadbfoundation
 
       # icono comodín
@@ -70,9 +70,8 @@ theme:
   # Palette toggle for light mode
   - media: "(prefers-color-scheme: light)"
     scheme: default
-    primary: yellow
-    # accent: lime 
-    accent: light green
+    primary: purple
+    accent: pink
     toggle:
       icon: material/lightbulb 
       name: Modo claro
@@ -80,9 +79,8 @@ theme:
   # Palette toggle for dark mode
   - media: "(prefers-color-scheme: dark)"
     scheme: slate
-    primary: yellow
-    # accent: lime 
-    accent: light green
+    primary: purple
+    accent: purple
     toggle:
       icon: material/lightbulb-outline
       name: modo oscuro
@@ -219,16 +217,27 @@ markdown_extensions:
 nav:
   - Indice: index.md
 
-  - BORRADOR: SQL.md 
+  # - BORRADOR: SQL.md 
 
 
   - SQL: 
+    - Instalación: instalacion.md
+    - Notación de Chen:
+    - CRUD: sql/crud.md
+    - Identificadores: sql/identificadores.md
+    - Ordenar campos: sql/ordenar.md
+    - Cláusula WHERE: sql/where.md
+    - Funciones de Agregación: sql/funciones_agregacion.md
+    - Agrupar (Group by): sql/group_by.md
+    - Subconsultas: sql/subconsultas.md
+    - Uniones (Joins): sql/uniones.md 
     - Normalización: sql/normalizacion.md
     - Índices: sql/indices.md
     - Vistas: sql/vistas.md
     - Bloqueos y Transacciones: sql/bloqueos_transacciones.md
     - Procedimientos y Funciones: sql/procedimientos.md
     - Uso en Python: sql/uso_python.md
+    - Cardinalidad: sql/cardinalidad.md
     - 'Anexo: NorthWind': sql/northwind.md
 
 

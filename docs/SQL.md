@@ -3,7 +3,7 @@
 # SQL
 
 
-
+<!-- 
 
 ## Notacion de Chen
 
@@ -24,10 +24,10 @@ Los atributos **derivados** se pueden obtener a partir de otros atributos. Se re
 ### Key (clave)
 
 Las keys son atributos únicos e irrepetibles. Se marcan con un subrayado.
+ -->
 
 
-
-
+<!-- 
 
 ## Instalacion
 
@@ -42,7 +42,11 @@ gestor de base de datos (gdb)
 sudo dnf install sqlite # gestor base datos
 sudo dnf install sqlitebrowser # interfaz grafica
 sudo dnf install sqlite-doc
-```
+``` -->
+
+
+
+<!-- 
 
 
 ## Tabla
@@ -112,6 +116,12 @@ DELETE FROM usuarios ;
 ```
 
 
+
+<!--  -->
+
+
+
+<!-- 
 ## Identificadores
 
 ### primary key
@@ -188,6 +198,13 @@ Ejemplo, leer precios y su doble de la tabla 'Products':
 SELECT Price as precio ,Price*2 as precio_doble FROM Products;
 ```
 
+<!--  -->
+
+
+
+
+<!-- 
+
 ### ORDER BY
 
 Ordenar un campo en orden ascendente:
@@ -243,7 +260,11 @@ Seleccionar campos no repetidos
 ```sql
 SELECT DISTINCT SupplierID FROM Products;
 ```
+ -->
 
+
+
+<!-- 
 ## Clausula WHERE
 
 WHERE permite filtrar resultados en basea distintos criterios:
@@ -261,9 +282,6 @@ por rango numérico:
 SELECT * FROM Products WHERE Price <= 40; --menor o igual a
 ```
 
-
-
-
 ### DELETE
 
 ```sql
@@ -271,13 +289,15 @@ DELETE FROM turnos_medicos
 WHERE id_turno = 2 ;
 ```
 
-
 ### UPDATE
 
 ```sql
 UPDATE turnos_medicos SET horario = "13:00" 
 WHERE id_turno = 1 ; 
-```
+``` -->
+
+
+<!-- 
 
 ## Operadores Lógicos: AND, OR, NOT
 
@@ -453,7 +473,9 @@ Con el operador NOT se puede invertir el resultado, excluyendo los casos elegido
 SELECT * FROM Employees
 WHERE LastName NOT IN ("King","Fuller") ;
 ```
+ -->
 
+<!--  
 
 ## Funciones de Agregacion
 
@@ -505,6 +527,11 @@ WHERE ProductName IS NOT NULL;
 ```
 
 **Comentario:** la funcion ROUND  **no es** de agregacion.
+
+
+<!--  -->
+
+<!-- 
 
 ## GROUP BY 
 
@@ -584,6 +611,14 @@ ORDER By ...
 LIMIT ...
 ```
 
+ -->
+
+
+
+
+
+<!-- 
+
 ## Subconsultas (Subqueries)
 
 Las subconsultas son consultas del tipo SELECT cuyo resultado servirá para hacer una consulta de mayor jerarquía
@@ -650,7 +685,13 @@ HAVING unidades_totales > (SELECT avg(unidades_totales) FROM (
 	GROUP BY e2.EmployeeID
 ))
 ```
+ -->
 
+
+
+
+
+<!-- 
 ## Uniones (*joins*)
 
 Los joins permiten combinar los datos de dos o más tablas y devolverlos en una sola.
@@ -789,7 +830,13 @@ SELECT FirstName , Reward, Month FROM Rewards r
 LEFT JOIN Employees e 
 ON e.EmployeeID = r.EmployeeID
 ```
+ -->
 
+
+
+
+
+<!-- 
 ## Cardinalidad
 
 
@@ -803,7 +850,7 @@ La tabla intermedia se relacionará n:1 con la primera tabla y 1:n con la segund
 
 
 ## VER ESQUEMA MARTIN
-
+ -->
 
 
 

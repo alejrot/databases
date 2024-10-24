@@ -216,14 +216,11 @@ markdown_extensions:
 
 nav:
   - Indice: index.md
-
-  # - BORRADOR: SQL.md 
-
-
   - SQL: 
-    - Instalación: instalacion.md
-    - Notación de Chen:
-    - CRUD: sql/crud.md
+    # - Instalación: sql/instalacion.md
+    - Notación de Chen: sql/chen.md
+    - Tablas y Datos: sql/tabla_datos.md
+    - Consultas: sql/query.md
     - Identificadores: sql/identificadores.md
     - Ordenar campos: sql/ordenar.md
     - Cláusula WHERE: sql/where.md
@@ -239,6 +236,5 @@ nav:
     - Uso en Python: sql/uso_python.md
     - Cardinalidad: sql/cardinalidad.md
     - 'Anexo: NorthWind': sql/northwind.md
-
 
   - Indice de tags: tags.md

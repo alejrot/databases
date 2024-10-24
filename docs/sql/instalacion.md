@@ -34,6 +34,13 @@ gestor de base de datos (gdb)
 **Recomendado:** SQLite y su browser
 
 
+**Instalación en Windows:**
+
+descargar los ejecutables y agregar su ruta a la variable del sistema PATH.
+
+
+
+
 [Instalacion en Fedora:](https://developer.fedoraproject.org/tech/database/sqlite/about.html)
 ```bash
 sudo dnf install sqlite # gestor base datos

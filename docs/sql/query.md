@@ -25,7 +25,15 @@ tags:
   - MariaDB
 ---
 
-# CRUD
+# Consultas
+
+## Query
+
+Las queries (consultas) son **todas** las operaciones que afectan a la base de datos.
+
+
+
+## CRUD
 
 El acrónimo CRUD representa las operaciones básicas sobre las bases de datos:
 
@@ -33,20 +41,6 @@ El acrónimo CRUD representa las operaciones básicas sobre las bases de datos:
 - leer (*read*);
 - modificar (*update*);
 - eliminar (*delete*).
-
-
-## Query
-
-Las queries (consultas) son **todas** las operaciones que afectan a la base de datos.
-
-
-## Tabla
-
-Las tablas son el formato usado por las bases de datos relacionales para alojar y organizar los datos internos.
-Los datos se reparten en *campos* y *registros*:
-
-- **Campo** es una columna de la tabla;
-- **Registro** es una fila de la tabla.
 
 
 ## Comandos CRUD
@@ -68,7 +62,10 @@ CREATE TABLE "usuarios" (
 );
 ```
 
-El punto y coma (`;`) indica el final de una intrucción.
+
+!!! info "Fin de instrucción"
+
+    El punto y coma (`;`) indica el final de cada intrucción.
 
 
 ### Actualiizar (*update*)

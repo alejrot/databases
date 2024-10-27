@@ -12,7 +12,8 @@ Es un lenguaje de programación y está estandarizado.
 
 
 
-Usos
+Usos:
+
 - consultar datos;
 - restricciones y reglas de integridad
 
@@ -30,6 +31,10 @@ Usos
 - combinacion de datos
 - optimizacion de rendimiento
 
+
+Recomendado:
+
+Tener a mano la [base de datos Northwind](sql/northwind.md) para la práctica.
 
 
 

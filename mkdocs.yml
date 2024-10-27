@@ -3,7 +3,7 @@ site_name: Bases de Datos
 
 
 # Repositorio
-repo_url: https://github.com/MarceloMarot/databases
+repo_url: https://github.com/alejrot/databases
 repo_name: databases
 edit_uri: edit/master/docs/
 
@@ -160,7 +160,7 @@ plugins:
 
 
 extra:
-  # homepage: https://github.com/MarceloMarot/javascript-docs
+  # homepage: https://github.com/alejrot/javascript-docs
   # homepage: /
 
   # Etiquetas de contenidos
@@ -214,16 +214,26 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
 
+  #  soporte para diagramas Mermaid
+  - pymdownx.superfences:
+      custom_fences:
+          - name: mermaid
+            class: mermaid
+            format: !!python/name:pymdownx.superfences.fence_code_format
+
+
+
 nav:
   - Indice: index.md
   - SQL: 
-    # - Instalación: sql/instalacion.md
-    - Notación de Chen: sql/chen.md
+    - Instalación: sql/instalacion.md
     - Tablas y Datos: sql/tabla_datos.md
+    - Cardinalidad: sql/cardinalidad.md
+    - Notación de Chen: sql/chen.md
     - Consultas: sql/query.md
     - Identificadores: sql/identificadores.md
     - Ordenar campos: sql/ordenar.md
-    - Cláusula WHERE: sql/where.md
+    - Cláusulas Condicionales: sql/condicionales.md
     - Funciones de Agregación: sql/funciones_agregacion.md
     - Agrupar (Group by): sql/group_by.md
     - Subconsultas: sql/subconsultas.md
@@ -234,7 +244,6 @@ nav:
     - Bloqueos y Transacciones: sql/bloqueos_transacciones.md
     - Procedimientos y Funciones: sql/procedimientos.md
     - Uso en Python: sql/uso_python.md
-    - Cardinalidad: sql/cardinalidad.md
     - 'Anexo: NorthWind': sql/northwind.md
 
   - Indice de tags: tags.md

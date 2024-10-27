@@ -29,22 +29,26 @@ tags:
 
 # Funciones de Agregacion
 
-### count() :
+## COUNT() 
+
 ```sql
 -- conteo
-SELECT count(FirstName) from Employees;
+SELECT COUNT(FirstName) FROM Employees;
 -- Conteo y asignacion de alias
-SELECT count(FirstName) AS cantidad_empleados from Employees;
+SELECT COUNT(FirstName) AS cantidad_empleados FROM Employees;
 ```
 
-### sum():
+## SUM()
+
 ```sql
 SELECT Price FROM Products;
 
 -- Suma
-SELECT sum(Price) FROM Products; 
+SELECT SUM(Price) FROM Products; 
 ```
-### AVG():
+
+## AVG()
+
 ```sql
 -- media (average)
 SELECT AVG(Price) FROM Products; 
@@ -53,9 +57,10 @@ SELECT ROUND(AVG(Price)) FROM Products;
 
 -- redondeo con dos digitos
 SELECT ROUND(AVG(Price), 2) FROM Products; 
-
 ```
-### MIN():
+
+## MIN()
+
 ```sql
 SELECT MIN(Price) FROM Products; 
 SELECT ProductName, MIN(Price) FROM Products; 
@@ -66,7 +71,8 @@ SELECT ProductName, MIN(Price) FROM Products
 WHERE ProductName IS NOT NULL;
 ```
 
-### MAX():
+## MAX()
+
 ```sql
 SELECT  MAX(Price) FROM Products;
 
@@ -76,4 +82,4 @@ SELECT ProductName, MAX(Price) FROM Products
 WHERE ProductName IS NOT NULL;
 ```
 
-**Comentario:** la funcion ROUND  **no es** de agregacion.
+**Comentario:** la funcion `ROUND()`  **no es** de agregacion.

@@ -35,19 +35,24 @@ SQLite utiliza bloqueo completo	mientras se realiza una operacion de escritura, 
 
 Tipos de bloqueos:
 
-- Bloqueos compartidos (shared locks)
-Mientras se lee se permiten lecturas pero no escrituras
+- Bloqueos compartidos (*shared locks*)
+Mientras se lee se permiten lecturas pero no escrituras.
+Sólo se puede escribir cuando nadie esté leyendo la data.
 
-- Bloqueos reservados (reserved locks) 
-Mientras se escribe se permiten lecturas pero no escrituras
+- Bloqueos reservados (*reserved locks*) 
+Mientras se escribe se permiten lecturas pero no escrituras.
+Se impiden escrituras solapadas; 
+en cambio se permite leer datos cambiantes.
 
-- Bloqueos exclusivos (exclusive locks)
-Mientras se escribe se impiden tanto lecturas como escrituras
+
+- Bloqueos exclusivos (*exclusive locks*)
+Mientras se escribe se impiden tanto lecturas como escrituras.
+
 
 
 Las **transacciones** son cambios volátiles que se pueden asentar permanentemente (*commit*) o deshacer (*rollback*). 
 
-La transacción siempre comienza con el comando BEGIN:
+La transacción siempre comienza con el comando `#!sql BEGIN`:
 
 ```sql
 -- Comienza una transaccion
@@ -56,14 +61,14 @@ BEGIN;
 UPDATE Products SET ProductName = "El Pollo" WHERE ProductName = "Chais" ;
 ```
 
-Si se detecta algún error o inconsistencia en los cambios realizados se puede ordenar el paso atrás con el comando ROLLBACK:
+Si se detecta algún error o inconsistencia en los cambios realizados se puede ordenar el paso atrás con el comando `#!sql ROLLBACK`:
 
 ```sql
 -- Deshace los cambios
 ROLLBACK
 ```
 
-Si en cambio se busca guardar los cambios de forma definitiva se utiliza el comando COMMIT:
+Si en cambio se busca guardar los cambios de forma definitiva se utiliza el comando `#!sql COMMIT`:
 
 ```sql
 -- Asienta los cambios en la base de datos

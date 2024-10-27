@@ -25,22 +25,33 @@ tags:
   - MariaDB
 ---
 
+# Cláusulas Condicionales
 
 
 
-## Clausula WHERE
+Las cláusulas condicionales se utilizan con ayuda de la cláusula `WHERE`. 
+Pueden afectar a la lectura de datos (`SELECT`), 
+a la actualización (`UPDATE`) 
+y a la eliminación (`DELETE`).
 
-WHERE permite filtrar resultados en basea distintos criterios:
 
-por coincidencia numérica
+
+## Cláusula WHERE
+
+
+WHERE permite filtrar resultados en base a distintos criterios:
+
+### SELECT
+
+- por coincidencia numérica
 ```sql
 SELECT * FROM Products WHERE ProductID = 24;
 ```
-por texto:
+ - por texto:
 ```sql
 SELECT * FROM Products WHERE ProductName = "Tofu";
 ```
-por rango numérico:
+- por rango numérico:
 ```sql
 SELECT * FROM Products WHERE Price <= 40; --menor o igual a
 ```
@@ -108,7 +119,9 @@ SELECT * FROM Customers
 WHERE  Country != "USA" ;
 ```
 
-El operador DISTINCT (!=) es un operador relacional
+El operador DISTINCT (!=) es un operador de comparación.
+NO cuenta como operador lógico.
+
 
 ### BETWEEN
 
@@ -132,7 +145,14 @@ SELECT * FROM Employees
 WHERE BirthDate BETWEEN "1960-0-1" AND "1970-01" ;
 ```
 
-**Importante:** los valores límite están incluidos. Y éstos deben estar ordenados de menor a mayor.
+
+!!! warning "Valores límite"
+    Los valores límite de `BETWEEN` están incluidos. Además estos deben cumplir:
+
+    - estar ordenados de menor a mayor;
+    - ser de tipo compatible 
+    (hay que evitar mezcla de criterios).
+
 
 ### LIKE
 
@@ -143,8 +163,11 @@ La cláusula LIKE se porta como un operador igualdad:
 SELECT * FROM Employees
 WHERE LastName LIKE "Fuller" ;
 ```
-La ventaja es el potencial de usar *comodines*
-#### Comodin '\%'
+La ventaja es el potencial de usar *caracteres comodín*
+para implementar la búsqueda de patrones.
+
+
+#### Comodin `%`
 
 ```sql
 -- Apellidos que empiezan con "D"
@@ -164,7 +187,7 @@ SELECT * FROM Employees
 WHERE LastName LIKE "%A%" ;
 ```
 
-#### Comodin '\_'
+#### Comodin `_`
 
 ```sql
 -- Apellidos que coinciden con el patrón
@@ -204,7 +227,7 @@ WHERE ProductName IS NOT NULL;
 
 ### IN
 
- El operador IN sirve para aquellos casos en que se necesita seleccionar muchos valores particulares de un parámetro.
+El operador IN sirve para aquellos casos en que se necesita seleccionar muchos valores particulares de un parámetro.
 
 Por ejemplo: valores 3,4,5,9,14
 ```sql
@@ -216,13 +239,17 @@ OR SupplierID = 9
 OR SupplierID = 14 ;
 ```
 
-Con el operador IN se reduce a:
+Con el operador `IN` se reduce a:
 
 ```sql
 SELECT * FROM Products
 WHERE SupplierID IN (3, 4, 5, 9, 14) ;
 ```
 Los valores de interés se agrupan por paréntesis y se separan con comas.
+
+`IN` es considerado un **operador lógico** por sustituir la batería de operadores `OR` que aglomeraban los condicionales de relación para cada valor.
+
+
 
 Los valores buscados pueden ser textos:
 ```sql

@@ -28,8 +28,18 @@ tags:
 
 # Uniones (*joins*)
 
-Los joins permiten combinar los datos de dos o más tablas y devolverlos en una sola.
-Tipos:
+
+
+
+
+Los *joins* permiten combinar los datos de dos o más tablas y devolverlos en una sola.
+
+
+Trabajan mediante índices y son una alternativa más eficiente a las subconsultas.
+
+
+
+Tipos de uniones:
 
 - Inner join
 - Left join
@@ -40,37 +50,58 @@ Tipos:
 
 ## Inner join
 
+Los inner join devuelven las coincidencias entre tablas.
+
+
 Ejemplo implícito:
 ```sql
--- Inner join implicito
+-- Tabla de empleados y tabla de órdenes de compra
 SELECT * FROM Employees e, orders o
+-- Inner join implicito
 WHERE e.EmployeeID = o.EmployeeID 
 ```
+
+
 Ejemplo explícito:
 ```sql
--- Inner join explicito
+-- Tabla de empleados y tabla de órdenes de compra
 SELECT * FROM Employees e
+-- Inner join explicito
 INNER JOIN Orders o
+-- Condición de unión
 ON e.EmployeeID = o.EmployeeID 
 ```
-El inner join es la opcion por defecto. Si sólo se indica 'JOIN' se asume que es del tipo INNER.
+El *inner join* es la opcion por defecto. 
+Si sólo se indica 'JOIN' se asume que es del tipo INNER.
 
 
 
 ## Cross join
 
-El cross join combina todos elementos de una tabla con todos los elementos de la otra. Si una tabla tiene n registros y la otra tiene m registros entonces la tabla final tendrá n*m registros en total.
+El *cross join* combina todos elementos de una tabla con todos los elementos de la otra. 
+Si una tabla tiene `n` registros y la otra tiene `m` registros 
+entonces la tabla final tendrá `n x m` registros en total.
+
+
+Ejemplo implícito:
+```sql
+-- Cross join
+SELECT * FROM Employees e, Orders o
+```
+
 Ejemplo explícito:
 ```sql
 -- Cross join
 SELECT * FROM Employees e
 CROSS JOIN Orders o
 ```
-El cross join rara vez es usado.
+El *cross join* rara vez es usado.
 
 
 ## Left join
-El elft join muestra la tabla izquierda en su totalidad pero le agrega los datos comunes con la segunda tabla. A los registros no coincidentes los rellena con Null
+
+El *left join* muestra la tabla izquierda en su totalidad pero le agrega los datos comunes con la segunda tabla. 
+A los registros no coincidentes los rellena con `Null`
 
 ```sql
 -- Left join
@@ -81,9 +112,9 @@ ON e.EmployeeID = o.EmployeeID
 
 ## Right Join
 
-Es el contrario de left join: muestra en su totalidad la segunda tabla y le añade los elementos coindicentes con la primera.
+Es el contrario de *left join*: muestra en su totalidad la segunda tabla y le añade los elementos coindicentes con la primera.
 
-**Importante:** SQLite no permite crear la right join directamente. Sin embargo se puede implementar invirtiendo el orden de llamado de las tablas:
+**Importante:** SQLite no permite crear la *right join* directamente. Sin embargo se puede implementar invirtiendo el orden de llamado de las tablas:
 
 ```sql
 -- 'Right join' simulado
@@ -95,9 +126,10 @@ ON o.EmployeeID = e.EmployeeID
 
 ## Full join
 
-La full join equivale a la superposición de la left join con la right join.
+La full join equivale a la superposición de la *left join* con la *right join*.
 
-**Importante:** SQLite no permite crear la full join directamente. Sin embargo se puede implementar con el comando UNION :
+**Importante:** SQLite no permite crear la full join directamente. 
+Sin embargo se puede implementar con el comando `UNION`:
 
 
 
@@ -117,13 +149,15 @@ SELECT * FROM Orders o
 LEFT JOIN Employees e
 ON o.EmployeeID = e.EmployeeID 
 ```
-El comando UNION muestra la unión lógica de las tablas sin repetir elementos. Para mostrar también los registros repetidos usar UNION ALL.
+El comando `UNION` muestra la unión lógica de las tablas sin repetir elementos. 
+Para mostrar también los registros repetidos usar `UNION ALL`.
 
 
-Para que la **unión** funcione correctamente, las dos tablas deben tener los mismos campos; de otra manera se puede dar lugar a resultados impredecibles.
+Para que la **unión** funcione correctamente, las dos tablas deben tener los **mismos campos**; 
+de otra manera se puede dar lugar a resultados impredecibles.
 
 
-
+## Ejemplo aplicado
 Ejemplo aplicado: premios mensuales para los empleados
 ```sql
 -- Tabla de premios para los empleados

@@ -40,3 +40,14 @@ La tabla intermedia se relacionará n:1 con la primera tabla y 1:n con la segund
 
 ## VER ESQUEMA MARTIN
 
+
+Esta notación permite indicar la cardinalidad entre tablas con una línea con terminación especial:
+
+Opciones:
+
+- One
+- Many
+- One (and only one)
+- Zero or one
+- One or many
+- Zero or many

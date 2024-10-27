@@ -76,21 +76,31 @@ VALUES 	('Dr Gero', 1, 'dolor panza', '13:30')  ,
 SELECT * FROM turnos_medicos ;
 ```
 
-## Foreign keys
+## Foreign key (FK)
 
-Las tablas se pueden superponer para mostrarlas. Esto se hace separando por comas los nombres de tablas a mezclarse:
+Las claves foráneas son claves de una tabla que sirven para *referenciar* (apuntar) a los registros de otras tablas. 
+
+
+
+Supóngase quese necesita superponer dos tablas para mostrarlas juntas.
+Esto se hace separando por comas los nombres de tablas a mezclarse:
 
 ```sql title="Claves primarias y foráneas"
 SELECT * FROM turnos_medicos , usuarios;
 ```
-En este ejemplo, el campo *id_turno* sigue siendo clave primaria, pero dentro de la tabla se carga el campo *id_usuario* el cual apunta a la otra tabla. Entonces *id_usuario* es en la tabla compuesta una clave foránea (*foreign key*)
+En este ejemplo, el campo *id_turno* sigue siendo clave primaria, 
+pero dentro de la tabla se carga el campo *id_usuario* el cual apunta a la otra tabla. 
+Entonces *id_usuario* es en la tabla compuesta una clave foránea (*foreign key*).
 
-
+Lo habitual es elegir siempre como claves foráneas a las claves primarias de otras tablas.
+Esto permite una referencia segura de unas tablas a otras, 
+porque las claves primarias son inmutables 
+y con ellas se evitan errores en caso de modificar los registros.
 
 ## Alias
 
 Los alias funcionan como nombres alternativos para los campos de una tabla.
-El alias se crea en la lectura con ela opción `AS`.
+El alias se crea en la lectura con la cláusula `AS`.
 
 Supóngase por ejemplo [base de datos Northwind para SQLite](northwind.md). Si se desea llamar 
 `Apellido` al campo `LastName` se hace:
@@ -124,4 +134,4 @@ En este caso la columna del campo `Price` se mostrará bajo el alias `precio` y 
 
 - Las *primary keys* son campos que **identifican registros** de una tabla;
 - Las *foreign keys* son campos que **apuntan** a las *primary keys* de otras tablas;
-- Los *alias* son **apodos temporales** para ciertos campos específicos de la tabla.
+- Los *alias* son **apodos temporales** para ciertos *campos específicos* de la tabla.

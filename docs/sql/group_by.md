@@ -30,6 +30,21 @@ tags:
 
 ## GROUP BY 
 
+```sql
+-- ordena los promedios de precios por proveedor
+SELECT SupplierID, ROUND(AVG(Price),2) as promedio FROM Products 
+GROUP BY SupplierID
+```
+
+Pasos:
+- lee la tabla de productos;
+- agrupa todos los productos incluidos en listas, en base al proveedor de cada uno;
+- les calcula el precio promedio de cada lista.
+
+
+
+
+
 
 ```sql
 SELECT SupplierID, ROUND(AVG(Price),2) as promedio FROM Products 
@@ -39,9 +54,41 @@ GROUP BY SupplierID
 ORDER BY promedio
 ```
 
+`WHERE` siempre va antes de `GROUP BY`.
+Primero se filtran los registros 
+y luego se agrupa el resultado.
+
+
 ## HAVING
 
-HAVING habilita filtrar en base a grupos. 
+<!-- HAVING habilita filtrar en base a grupos.  -->
+
+
+!!! danger "MAL"
+
+    `WHERE` no permite hacer referencia a la funcion de agregación
+
+    ```sql
+    SELECT SupplierID, ROUND(AVG(Price),2) AS promedio FROM Products 
+    WHERE promedio >40    -- MAL
+    GROUP BY SupplierID
+    ```
+
+    ```sql
+    SELECT SupplierID, ROUND(AVG(Price),2) AS promedio FROM Products 
+    GROUP BY SupplierID
+    HAVING promedio >40    -- BIEN
+    ```
+
+
+!!! info "`HAVING` vs `WHERE`"
+
+    `WHERE` filtra sobre campos,
+    en tanto que 
+    `HAVING` filtra sobre grupos.
+
+
+HAVING habilita filtrar en base a operaciones realizadas sobre grupos. 
 
 ```sql
 SELECT SupplierID, ROUND(AVG(Price),2) AS promedio FROM Products 
@@ -81,20 +128,29 @@ ORDER BY TOTAL DESC
 LIMIT 1
 ```
 
-Importante: no se puede concatenar funciones de agregaciones.
-Ejemplo: 
-```sql
-MAX(SUM( campo ) )
-```
-Ejemplo:
-```sql
--- ERROR: concatenado de funciones de agregación
-SELECT ProductID, SUM(Quantity) as Total FROM OrderDetails
-GROUP BY ProductID
-HAVING MAX(TOTAL) 
-ORDER BY TOTAL
-```
+!!! warning "Concatenar agregaciones"
 
+    No se puede concatenar funciones de agregaciones.
+    
+    Ejemplo: 
+    ```sql
+    MAX(SUM( campo ) )
+    ```
+
+    Ejemplo:
+    ```sql
+    -- ERROR: concatenado de funciones de agregación
+    SELECT ProductID, SUM(Quantity) as TOTAL FROM OrderDetails
+    GROUP BY ProductID
+    HAVING MAX(TOTAL) -- ERROR
+    ORDER BY TOTAL
+    ```
+
+    Para evitar este problema existen las subconsultas (*subqueries*)
+
+
+
+## Orden de cláusulas
 
 ```sql
 -- Orden de operaciones

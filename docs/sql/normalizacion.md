@@ -53,7 +53,9 @@ Ejemplo aplicando primera forma normal:
 
 
 ## 2º Forma Normal (2NF)
-El valor de cada celda debe dependér unicamente de la clave primaria. (No puede haber celdas con varias claves afectando su contenido). Se previene la dependencia *parcial*.
+El valor de cada celda debe dependér unicamente de la clave primaria.
+(No puede haber celdas con varias claves afectando su contenido). 
+Se previene la *dependencia parcial*.
 
 Ejemplo tabla mal implementada:
 
@@ -76,7 +78,9 @@ Una forma acorde a la segunda forma de implementar la tabla es:
 REVISAR
 
 ## 3º Forma Normal (3NF)
-Se busca eliminar la dependencia transitiva. Se trata de no repetir relaciones entre campos. Por ejemplo: en una tabla de datos de usuarios donde se indica la ciudad de su domicilio y su provincia (provincia/estado/departamento/etc) :
+Se busca eliminar la *dependencia transitiva*. 
+Se trata de no repetir relaciones entre campos. 
+Por ejemplo: en una tabla de datos de usuarios donde se indica la ciudad de su domicilio y su provincia (provincia/estado/departamento/etc) :
 
 
 | ID_usuario| nombre_usuario| ciudad	| provincia	|
@@ -102,17 +106,26 @@ De esta forma se previene evitar la repetición de datos de ubicación en distin
 
 ## 4º Forma Normal (4NF)
 
-- multiples valores para una misma tabla
-- valores dependientes de múltiples valores de la misma tabla.
+Evita la redundancia de datos:
 
-*dependencia muiltivaluada*
+- multiples valores para una misma tabla
+- valores dependientes de múltiples valores de la misma tabla 
+(*dependencia muiltivaluada*)
+
 *clave foranea compuesta*
 
 ## 5º Forma Normal (5NF)
 
 Se previenen las *dependencias de union* entre atributos
 
-Para diseñar bases de datos pequeñas utilizar la tercera forma normal suele ser suficiente. En cambio para bases de datos muy grandes y con necesidad de escalamiento es recomendable implementar la cuarta o la quinta forma normal.
+
+Si un atributo requiere unir atributos de varias tablas entonces debe ser movido a otra tabla.
+
+
+
+!!! tip "Criterios de Normalización"
+
+    Para diseñar bases de datos pequeñas utilizar la tercera forma normal suele ser suficiente. En cambio para bases de datos muy grandes y con necesidad de escalamiento es recomendable implementar la cuarta o la quinta forma normal.
 
 
 ## Referencias

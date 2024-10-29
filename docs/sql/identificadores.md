@@ -76,6 +76,14 @@ VALUES 	('Dr Gero', 1, 'dolor panza', '13:30')  ,
 SELECT * FROM turnos_medicos ;
 ```
 
+El resultado es la tabla siguiente:
+
+|id_turno|profesional|id_usuario|motivo|horario|
+|:---|:---|:----|:---|:---|
+|1|	Dr Gero|1|dolor panza|13:30|
+|2|	Dr Manhattan|3|dolor cabeza|14:30|
+
+
 ## Foreign key (FK)
 
 Las claves foráneas son claves de una tabla que sirven para *referenciar* (apuntar) a los registros de otras tablas. 
@@ -105,9 +113,22 @@ El alias se crea en la lectura con la cláusula `AS`.
 Supóngase por ejemplo [base de datos Northwind para SQLite](northwind.md). Si se desea llamar 
 `Apellido` al campo `LastName` se hace:
 
-```sql title="Alias- campo único"
+
+```sql title="Alias - campo único"
 SELECT LastName AS Apellido FROM Employees;
 ```
+
+
+|Apellido|
+|---|
+|Davolio|
+|Fuller|
+|Leverling|
+|...|
+
+
+
+
 
 En este ejemplo `Apellido` es un alias para `LastName`.
 
@@ -118,6 +139,16 @@ Múltiples alias pueden ser asignados en una misma lectura de datos:
 SELECT LastName AS apellido, FirstName AS nombre FROM Employees;
 ```
 
+|apellido	|nombre|
+|---|---|
+|Davolio	|Nancy|
+|Fuller	|Andrew|
+|Leverling	|Janet|
+|...|
+
+
+
+
 Usar alias facilita leer campos afectados por funciones.
 
 Por ejemplo, para leer los precios y su doble de la tabla `Products`:
@@ -125,9 +156,14 @@ Por ejemplo, para leer los precios y su doble de la tabla `Products`:
 SELECT Price AS precio, Price*2 AS precio_doble FROM Products;
 ```
 
-En este caso la columna del campo `Price` se mostrará bajo el alias `precio` y su réplica ya multiplicada por dos se mostrará bajo el alias `precio_doble`.
+En este caso la columna del campo `Price` se mostrará bajo el alias `precio` y su réplica ya multiplicada por dos se mostrará bajo el alias `precio_doble`:
 
-
+|precio | precio_doble|
+|---|---|
+|18	| 36 |
+|19	| 38 |
+|10	| 20 |
+|...|
 
 
 ## Resumen
@@ -135,3 +171,5 @@ En este caso la columna del campo `Price` se mostrará bajo el alias `precio` y 
 - Las *primary keys* son campos que **identifican registros** de una tabla;
 - Las *foreign keys* son campos que **apuntan** a las *primary keys* de otras tablas;
 - Los *alias* son **apodos temporales** para ciertos *campos específicos* de la tabla.
+
+

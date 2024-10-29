@@ -114,7 +114,7 @@ conector.rollback()
 ```
  </div>
 
-Una posibilidad del uso de éstos métodos es repartirlos entre las rutinas de excepciones ( `#!py try` - `#!py except` ). 
+Una posibilidad del uso de éstos métodos es repartirlos entre las rutinas de excepciones ( `#!py try` - `#!py except` - `#!py else` ). 
 De esta forma se validan los cambios sólo si no se produjeron excepciones 
 y en caso contrario se ordena el reestablecimiento de los datos originales.
 

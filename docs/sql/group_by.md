@@ -37,6 +37,7 @@ GROUP BY SupplierID
 ```
 
 Pasos:
+
 - lee la tabla de productos;
 - agrupa todos los productos incluidos en listas, en base al proveedor de cada uno;
 - les calcula el precio promedio de cada lista.

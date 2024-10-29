@@ -68,7 +68,7 @@ CREATE TABLE "usuarios" (
     El punto y coma (`;`) indica el final de cada intrucción.
 
 
-### Actualiizar (*update*)
+### Actualizar (*update*)
 
 Los datos se actualizan con el comando `INSERT`
 
@@ -113,12 +113,29 @@ Siguiendo el ejemplo previo, si se necesita leer todo el contenido de la tabla:
 SELECT * FROM usuarios;
 ```
 
+
+|id_usuario|nombre|apellido|edad|
+|---|---|---|---|
+|1|Aitor	|Tilla|47|
+|2|Aquiles|Brinco|25|
+|3|Helen	|Chufe|31|
+|4|Susana	|Torio|55|
+
+
 Si en cambio se busca leer algunos campos particulares de una tabla:
 
 ```sql title="Read - campos específicos"
 -- lectura de campos específicos desde tabla
 SELECT nombre, edad FROM usuarios ;
 ```
+
+|nombre|edad|
+|---|----|
+|Aitor|47|
+|Aquiles|25|
+|Helen|31|
+|Susana|55|
+
 Los campos elegidos se separan con comas.
 
 

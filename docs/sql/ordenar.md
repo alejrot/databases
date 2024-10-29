@@ -28,7 +28,7 @@ tags:
 # Ordenado y filtrado
 
 El ordenamiento de datos se realiza durante la consulta con el comando `ORDER BY`.
-
+Este comando indica el campo en base al cual se hará el ordenamiento.
 
 El filtrado de los valores repetidos se realiza durante la consulta con la cláusula `DISTINCT`.
 

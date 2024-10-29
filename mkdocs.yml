@@ -231,6 +231,7 @@ nav:
     - Cardinalidad: sql/cardinalidad.md
     - Notación de Chen: sql/chen.md
     - Consultas: sql/query.md
+    - Comentarios: sql/comentarios.md
     - Identificadores: sql/identificadores.md
     - Ordenar campos: sql/ordenar.md
     - Cláusulas Condicionales: sql/condicionales.md
@@ -244,6 +245,7 @@ nav:
     - Bloqueos y Transacciones: sql/bloqueos_transacciones.md
     - Procedimientos y Funciones: sql/procedimientos.md
     - Uso en Python: sql/uso_python.md
+    - Diferencias y Migración: sql/diferencias_migracion.md
     - 'Anexo: NorthWind': sql/northwind.md
 
   - Indice de tags: tags.md

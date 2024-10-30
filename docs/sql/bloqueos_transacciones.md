@@ -19,10 +19,10 @@ tags:
 #   - PNPM
 #   - ViteJS
   - SQLite
-  - SQLAlchemy
-  - MySQL
-  - PostgreSQL
-  - MariaDB
+  # - SQLAlchemy
+  # - MySQL
+  # - PostgreSQL
+  # - MariaDB
 ---
 
 

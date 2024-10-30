@@ -18,11 +18,11 @@ tags:
 #   - NPM
 #   - PNPM
 #   - ViteJS
-  - SQLite
+  # - SQLite
 #   - SQLAlchemy
-  - MySQL
-  - PostgreSQL
-  - MariaDB
+  # - MySQL
+  # - PostgreSQL
+  # - MariaDB
 ---
 
 

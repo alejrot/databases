@@ -1,6 +1,7 @@
 site_name: Bases de Datos
 
-
+site_description: Documentación y apuntes sobre bases de datos
+site_url: https://alejrot.github.io/databases/
 
 # Repositorio
 repo_url: https://github.com/alejrot/databases
@@ -143,24 +144,31 @@ plugins:
   - search
 
   # etiquetas
-
   - tags:
       tags_file: tags.md
 
-  # fechas de repositorio
-  - git-revision-date-localized:
-      enabled: true
-      enable_creation_date: true
-      type: date        # fecha
-      # type: datetime    # fecha y hora
-      # type: iso_date    # fecha ISO (sólo numeros)
-      # type: iso_datetime  # fecha ISO (sólo numeros)
-      # type: timeago       # tiempo desde publicación
-      fallback_to_build_date: true
 
+  # habilitacion por grupo 
+  # grupo Nº1: servidor remoto ('Continuous Integration')
+  - group:
+      enabled: !ENV CI
+      plugins:
+        # fechas de repositorio
+        - git-revision-date-localized:
+            enabled: true
+            enable_creation_date: true
+            type: date        # fecha
+            # type: datetime    # fecha y hora
+            # type: iso_date    # fecha ISO (sólo numeros)
+            # type: iso_datetime  # fecha ISO (sólo numeros)
+            # type: timeago       # tiempo desde publicación
+            fallback_to_build_date: true
+        # Tarjetas PNG automáticas 
+        - social:
+            cards_layout: default/accent
 
 extra:
-  # homepage: https://github.com/alejrot/javascript-docs
+  # homepage: https://github.com/alejrot/databases
   # homepage: /
 
   # Etiquetas de contenidos
@@ -231,7 +239,6 @@ nav:
     - Cardinalidad: sql/cardinalidad.md
     - Notación de Chen: sql/chen.md
     - Consultas: sql/query.md
-    - Comentarios: sql/comentarios.md
     - Identificadores: sql/identificadores.md
     - Ordenar campos: sql/ordenar.md
     - Cláusulas Condicionales: sql/condicionales.md

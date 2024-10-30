@@ -31,7 +31,7 @@ tags:
 
 # Subconsultas (Subqueries)
 
-Las subconsultas son consultas del tipo SELECT cuyo resultado servirá para hacer una consulta de mayor jerarquía.
+Las subconsultas son consultas del tipo `#!sql SELECT` cuyo resultado servirá para hacer una consulta de mayor jerarquía.
 Las subconsultas no pueden modificar los datos guardados.
 
 ```sql
@@ -40,6 +40,8 @@ INSERT INTO (SELECT) ...
 UPDATE (SELECT ...) ...
 -- (etc)
 ```
+
+## Orden 
 
 El **orden de la subconsulta** es la cantidad de subconsultas anidadas. Si hay una es orden 1, si hay dos es orden dos, etc. 
 
@@ -54,6 +56,8 @@ EL estándar SQL impone un máximo de 16 subconsultas, pero hay gestores que sop
 	es decir son de sólo lectura. 
 	Sólo la consulta principal puede ser de otro tipo.
 
+
+## Tipos
 
 Tipos según resultado
 

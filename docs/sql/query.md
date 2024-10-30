@@ -20,9 +20,9 @@ tags:
 #   - ViteJS
   - SQLite
 #   - SQLAlchemy
-  - MySQL
-  - PostgreSQL
-  - MariaDB
+  # - MySQL
+  # - PostgreSQL
+  # - MariaDB
 ---
 
 # Consultas
@@ -31,7 +31,15 @@ tags:
 
 Las queries (consultas) son **todas** las operaciones que afectan a la base de datos.
 
+## Comentarios
 
+
+Los comentarios y la anulación de líneas de código SQL se realizan con doble guión (`#!sql --`) al inicio de la línea:
+
+
+```sql title="Comentarios"
+-- texto del commentario
+```
 
 ## CRUD
 
@@ -48,7 +56,8 @@ El acrónimo CRUD representa las operaciones básicas sobre las bases de datos:
 ### Crear (*create*)
 
 
-Las tablas se crean con el comando `CREATE` y en la declaración se enumera el nombre de tabla como también el nombre y tipo de cada campo a incluir en la misma
+Las tablas se crean con el comando `#!sql CREATE` 
+y en la declaración se enumera el nombre de tabla como también el nombre y tipo de cada campo a incluir en la misma.
 
 Por ejemplo, la creación de una tabla llamada *usuarios* que incluya como atributos el nombre, apellido y la edad de cada usario se puede hacer así:
 
@@ -70,7 +79,7 @@ CREATE TABLE "usuarios" (
 
 ### Actualizar (*update*)
 
-Los datos se actualizan con el comando `INSERT`
+Los datos se actualizan con el comando `#!sql INSERT`.
 
 Ejemplo: cargar datos de un usuario (un *registro*):
 
@@ -104,7 +113,7 @@ Prestar atencion al uso de comas para separar registros.
 ### Leer (*read*)
 
 
-La lectura de campos y de tablas se realizan con el comando `SELECT`.
+La lectura de campos y de tablas se realizan con el comando `#!sql SELECT`.
 
 Siguiendo el ejemplo previo, si se necesita leer todo el contenido de la tabla:
 
@@ -141,7 +150,7 @@ Los campos elegidos se separan con comas.
 
 ### Eliminar (*delete*)
 
-Las tablas se eliminan con el comando `DELETE`.
+Las tablas se eliminan con el comando `#!sql DELETE`.
 
 Por ejemplo, para eliminar una tabla de usuarios:
 

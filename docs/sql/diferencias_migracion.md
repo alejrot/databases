@@ -361,9 +361,9 @@ Esta función lee la hora actual del sistema con formato
 
 ### LIKE y ELIKE
 
-LIKE no distingue mayúsculas de minúsculas.
-LIKE funciona igual para todos.
-ELIKE distingue mayúsculas de minúsculas. 
+`#!sql LIKE` no distingue mayúsculas de minúsculas.
+`#!sql LIKE` funciona igual para todos.
+`#!sql ELIKE` distingue mayúsculas de minúsculas. 
 Sólo disponible con PosgreSQL.
 
 

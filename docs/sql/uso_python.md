@@ -142,44 +142,6 @@ else:
 
 
 
-## Funciones de usuario (*UDF*)
-
-Las funciones definidas por el usuario (*UDF*) se crean con el método `create_function()`.
-En él debe pasarse como argumento un nombre para la función, 
-el número de argumentos que usará 
-y la función lambda que define su funcionamiento interno.
-
-```python title="UDF - definición"
-# función lambda  de interés 
-cubo = lambda n : n*n*n
-
-# Funcion de usuario:
-# argumentos: 
-# 1 - nombre de la "funcion de usuario"
-# 2 - numero de argumentos
-# 3 - funcion lambda a ejecutar
-conector.create_function("cube",1, cubo)
-```
-
-La *función de usuario* así creada se usa normalmente **dentro** de la rutina SQL de la consulta:
-
-```python title="UDF - uso" hl_lines="7"
-# inicio de transacción (BEGIN implícito)
-cursor.execute(
-    # Rutina SQL, consulta de campos con funcion usuario
-    '''
-    SELECT ProductName, 
-        Price, 
-        round( cube(Price) , 2) AS CubicPrice 
-    FROM Products;
-    '''
-    )
-
-# respuesta de la base de datos
-resultados = cursor.fetchall()
-```
-
-
 
 
 

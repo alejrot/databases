@@ -245,7 +245,7 @@ en tanto que
 
 <div class="grid" markdown>
 
-!!! danger "MAL: `#!sql WHERE`"
+!!! failure "`#!sql WHERE`"
 
     `#!sql WHERE` no permite trabajar con la salida de las funciones de agregación:
 
@@ -256,7 +256,7 @@ en tanto que
     WHERE promedio > 40    -- MAL
     GROUP BY SupplierID
     ```
-!!! success "Bien: `#!sql HAVING`"
+!!! success "`#!sql HAVING`"
 
     `#!sql HAVING` está pensado para trabajar con la salida de las funciones de agregación:
 

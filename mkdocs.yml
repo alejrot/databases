@@ -233,6 +233,11 @@ markdown_extensions:
             format: !!python/name:pymdownx.superfences.fence_code_format
 
 
+extra_javascript:
+  # Tablas ordenables - TableSort
+  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
+  - javascripts/tablesort.js        # archivo local
+
 
 nav:
   - Indice: index.md
@@ -256,6 +261,8 @@ nav:
     - Procedimientos almacenados (Stored Procedures): sql/procedimientos.md
     - Uso en Python: sql/uso_python.md
     - Funciones Definidas por el Usuario (UDF): sql/udf.md
+    - Ejercicio Integrador - Recaudación: sql/recaudacion.md
+    
     - Diferencias y Migración: sql/diferencias_migracion.md
     - 'Anexo: NorthWind': sql/northwind.md
 

@@ -60,14 +60,6 @@ entonces la función `AVG()` usada calculará un promedio independiente para cad
 |28|	44.5|
 |29|	38.9|
 
-<!-- 
-Pasos:
-
-- lee la tabla de productos;
-- agrupa todos los productos incluidos en listas, en base al proveedor de cada uno;
-- les calcula el precio promedio de cada lista.
- -->
-
 
 ### Filtrado y ordenado
 
@@ -77,7 +69,6 @@ El orden general de operaciones indicado es:
 2. se agrupan los registros en grupos `#!sql GROUP BY`;
 3. se ordena el resultado (`#!sql ORDER BY`);
 4. limitar el número de registros de salida (`#!sql LIMIT`).
-
 
 
 
@@ -96,7 +87,7 @@ GROUP BY SupplierID
 ORDER BY promedio
 ```
 
-En este caso se obtienen los precios promedio de los 29 proveedores pero ordenados de 
+En este caso se obtienen los precios promedio de los 29 proveedores pero ordenados de menor a mayor:
 
 |SupplierID|	promedio|
 |---|---|
@@ -135,43 +126,15 @@ En este caso se obtienen los precios promedio de los 29 proveedores pero ordenad
     |60|430|
     |35|369|
 
-<!-- 
-Entonces el orden general de operaciones indicado es:
-
-1. se filtran los registros de la tabla; 
-2. se agrupan los registros en grupos;
-3. se ordena el resultado;
-4. limitar el número de registros de salida.
- -->
 
 
 
 ## HAVING
 
-<!-- HAVING habilita filtrar en base a grupos.  -->
-
-<!-- 
-`#!sql HAVING` permite filtrar registros resultantes de aplicar una función de agregación 
--->
-
-
-
 
 
 `#!sql HAVING` habilita filtrar registros en base a operaciones realizadas **sobre grupos**. 
 Por este motivo, el `#!sql HAVING` debe ir **siempre después** del `#!sql GROUP BY`.
-<!-- 
-```sql title="Precios promedios mayores al umbral"
--- se calcula el precio medio de los productos para cada proveedor
-SELECT SupplierID, ROUND(AVG(Price),2) AS promedio FROM Products 
--- WHERE filtra por registros
-WHERE ProductName IS NOT NULL
--- HAVING filtra por grupos
-GROUP BY SupplierID
-HAVING promedio >40
-```
- -->
-
 
 Por ejemplo, imagínese que se necesita calcular el total de ventas de una lista de productos.
 La tabla `OrderDetails` registra un total de 518 pedidos,
@@ -221,21 +184,6 @@ En este caso sólo pasaron tres productos:
 |31	|458|
 
 
-
-<!-- 
-Y si en cambio se necesita seleccionar solamente al producto con más unidades vendidas se puede saltear
-
-entonces se puede cambiar el ordenamiento 
-y agregar la limitación
-
-```sql
--- Producto más vendido
-SELECT ProductID, SUM(Quantity) as Ventas FROM OrderDetails
-GROUP BY ProductID
-ORDER BY Ventas DESC
-LIMIT 1
-``` 
--->
 
 ## `#!sql HAVING` vs `#!sql WHERE`
 

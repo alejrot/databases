@@ -53,6 +53,7 @@ theme:
       postgresql: simple/postgresql
       mariadb: simple/mariadb
       # mariadb: simple/mariadbfoundation
+      mongodb: simple/mongodb
 
       # icono comodín
       # default: material/cursor-default-click
@@ -199,7 +200,7 @@ extra:
     MySQL:  mysql
     PostgreSQL:  postgresql
     MariaDB: mariadb
-
+    MongoDB: mongodb
 
 
 markdown_extensions:
@@ -240,7 +241,7 @@ extra_javascript:
 
 
 nav:
-  - Indice: index.md
+  - Inicio: index.md
   - SQL: 
     - Instalación: sql/instalacion.md
     - Tablas y Datos: sql/tabla_datos.md
@@ -264,6 +265,8 @@ nav:
     - Ejercicio Integrador - Recaudación: sql/recaudacion.md
     
     - Diferencias y Migración: sql/diferencias_migracion.md
-    - 'Anexo: NorthWind': sql/northwind.md
+  
+  - Anexos: 
+    - NorthWind: anexos/northwind.md
 
   - Indice de tags: tags.md

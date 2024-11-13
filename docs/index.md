@@ -34,7 +34,7 @@ Usos:
 
 Recomendado:
 
-Tener a mano la [base de datos Northwind](sql/northwind.md) para la práctica.
+Tener a mano la [base de datos Northwind](anexos/northwind.md) para la práctica.
 
 
 

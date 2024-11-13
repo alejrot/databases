@@ -2,7 +2,7 @@
 
 # Ejercicio Integrador - Recaudación 
 
-A modo de integración se propone crear las consultas necesarias para calcular los montos de recaudación descritos en la [base de datos NorthWind](northwind.md).
+A modo de integración se propone crear las consultas necesarias para calcular los montos de recaudación descritos en la [base de datos NorthWind](../anexos/northwind.md).
 
 Se eligen los siguientes criterios:
 

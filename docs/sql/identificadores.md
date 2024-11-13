@@ -110,7 +110,8 @@ y con ellas se evitan errores en caso de modificar los registros.
 Los alias funcionan como nombres alternativos para los campos de una tabla.
 El alias se crea en la lectura con la cláusula `AS`.
 
-Supóngase por ejemplo [base de datos Northwind para SQLite](northwind.md). Si se desea llamar 
+Supóngase por ejemplo [base de datos Northwind para SQLite](../anexos/northwind.md). 
+Si se desea llamar 
 `Apellido` al campo `LastName` se hace:
 
 

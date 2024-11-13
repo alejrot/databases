@@ -1,90 +1,84 @@
--- Base de datos NorthWind adaptada a SQLite
+-- Base de datos NorthWind adaptada a PostgreSQL
 -- extraída de Wikiversity:
--- https://en.wikiversity.org/wiki/Database_Examples/Northwind/SQLite
+-- https://en.wikiversity.org/wiki/Database_Examples/Northwind/PostgreSQL
 -- Licencia Creative Commons BY-SA 4.0:
 -- https://creativecommons.org/licenses/by-sa/4.0/
 
--- Either:
---     Open DB Browser for SQLite.
---     Create a new database named Northwind.db.
---     Select Execute SQL.
---     Copy and paste the SQL below into the Execute SQL window.
---     Run the script to populate the Northwind database.
+-- Either :
+--     Open pgAdmin 4.
+--     Connect to your PostgreSQL server.
+--     Create a new database named Northwind.
+--     Select the Northwind database.
+--     Use the Query Tool.
+--     Copy and paste the SQL below into the query window.
+--     Execute the script to create the Northwind database.
 -- Or:
---     Run the following command in a terminal window.
---     sqlite3 Northwind.db
---     Copy and paste the SQL below into the terminal window to populate the Northwind database.
-
-DROP TABLE IF EXISTS OrderDetails;
-DROP TABLE IF EXISTS Orders;
-DROP TABLE IF EXISTS Products;
-DROP TABLE IF EXISTS Categories;
-DROP TABLE IF EXISTS Customers;
-DROP TABLE IF EXISTS Employees;
-DROP TABLE IF EXISTS Shippers;
-DROP TABLE IF EXISTS Suppliers;
+--     Run the following commands in a terminal window.
+--     psql
+--     CREATE DATABASE Northwind;
+--     Copy and paste the SQL below into the terminal window to create the Northwind database.
 
 CREATE TABLE Categories
 (      
-    CategoryID INTEGER PRIMARY KEY AUTOINCREMENT,
-    CategoryName TEXT,
-    Description TEXT
+    CategoryID SERIAL PRIMARY KEY,
+    CategoryName VARCHAR(25),
+    Description VARCHAR(255)
 );
 
 CREATE TABLE Customers
 (      
-    CustomerID INTEGER PRIMARY KEY AUTOINCREMENT,
-    CustomerName TEXT,
-    ContactName TEXT,
-    Address TEXT,
-    City TEXT,
-    PostalCode TEXT,
-    Country TEXT
+    CustomerID SERIAL PRIMARY KEY,
+    CustomerName VARCHAR(50),
+    ContactName VARCHAR(50),
+    Address VARCHAR(50),
+    City VARCHAR(20),
+    PostalCode VARCHAR(10),
+    Country VARCHAR(15)
 );
 
 CREATE TABLE Employees
 (
-    EmployeeID INTEGER PRIMARY KEY AUTOINCREMENT,
-    LastName TEXT,
-    FirstName TEXT,
-    BirthDate DATE,
-    Photo TEXT,
-    Notes TEXT
+    EmployeeID SERIAL PRIMARY KEY,
+    LastName VARCHAR(15),
+    FirstName VARCHAR(15),
+    BirthDate TIMESTAMP,
+    Photo VARCHAR(25),
+    Notes VARCHAR(1024)
 );
 
 CREATE TABLE Shippers(
-    ShipperID INTEGER PRIMARY KEY AUTOINCREMENT,
-    ShipperName TEXT,
-    Phone TEXT
+    ShipperID SERIAL PRIMARY KEY,
+    ShipperName VARCHAR(25),
+    Phone VARCHAR(15)
 );
 
 CREATE TABLE Suppliers(
-    SupplierID INTEGER PRIMARY KEY AUTOINCREMENT,
-    SupplierName TEXT,
-    ContactName TEXT,
-    Address TEXT,
-    City TEXT,
-    PostalCode TEXT,
-    Country TEXT,
-    Phone TEXT
+    SupplierID SERIAL PRIMARY KEY,
+    SupplierName VARCHAR(50),
+    ContactName VARCHAR(50),
+    Address VARCHAR(50),
+    City VARCHAR(20),
+    PostalCode VARCHAR(10),
+    Country VARCHAR(15),
+    Phone VARCHAR(15)
 );
 
 CREATE TABLE Products(
-    ProductID INTEGER PRIMARY KEY AUTOINCREMENT,
-    ProductName TEXT,
+    ProductID SERIAL PRIMARY KEY,
+    ProductName VARCHAR(50),
     SupplierID INTEGER,
     CategoryID INTEGER,
-    Unit TEXT,
-    Price NUMERIC DEFAULT 0,
+    Unit VARCHAR(25),
+    Price NUMERIC,
 	FOREIGN KEY (CategoryID) REFERENCES Categories (CategoryID),
 	FOREIGN KEY (SupplierID) REFERENCES Suppliers (SupplierID)
 );
 
 CREATE TABLE Orders(
-    OrderID INTEGER PRIMARY KEY AUTOINCREMENT,
+    OrderID SERIAL PRIMARY KEY,
     CustomerID INTEGER,
     EmployeeID INTEGER,
-    OrderDate DATETIME,
+    OrderDate TIMESTAMP,
     ShipperID INTEGER,
     FOREIGN KEY (EmployeeID) REFERENCES Employees (EmployeeID),
     FOREIGN KEY (CustomerID) REFERENCES Customers (CustomerID),
@@ -92,7 +86,7 @@ CREATE TABLE Orders(
 );
 
 CREATE TABLE OrderDetails(
-    OrderDetailID INTEGER PRIMARY KEY AUTOINCREMENT,
+    OrderDetailID SERIAL PRIMARY KEY,
     OrderID INTEGER,
     ProductID INTEGER,
     Quantity INTEGER,
@@ -246,83 +240,83 @@ INSERT INTO Suppliers VALUES(27,'Escargots Nouveaux','Marie Delamare','22, rue H
 INSERT INTO Suppliers VALUES(28,'Gai pâturage','Eliane Noz','Bat. B 3, rue des Alpes','Annecy','74000','France','38.76.98.06');
 INSERT INTO Suppliers VALUES(29,'Forêts d''érables','Chantal Goulet','148 rue Chasseur','Ste-Hyacinthe','J2S 7S8','Canada','(514) 555-2955');
 
-INSERT INTO Products VALUES(1,'Chais',1,1,'10 boxes x 20 bags',18.00);
-INSERT INTO Products VALUES(2,'Chang',1,1,'24 - 12 oz bottles',19.00);
-INSERT INTO Products VALUES(3,'Aniseed Syrup',1,2,'12 - 550 ml bottles',10.00);
-INSERT INTO Products VALUES(4,'Chef Anton''s Cajun Seasoning',2,2,'48 - 6 oz jars',22.00);
+INSERT INTO Products VALUES(1,'Chais',1,1,'10 boxes x 20 bags',18);
+INSERT INTO Products VALUES(2,'Chang',1,1,'24 - 12 oz bottles',19);
+INSERT INTO Products VALUES(3,'Aniseed Syrup',1,2,'12 - 550 ml bottles',10);
+INSERT INTO Products VALUES(4,'Chef Anton''s Cajun Seasoning',2,2,'48 - 6 oz jars',22);
 INSERT INTO Products VALUES(5,'Chef Anton''s Gumbo Mix',2,2,'36 boxes',21.35);
-INSERT INTO Products VALUES(6,'Grandma''s Boysenberry Spread',3,2,'12 - 8 oz jars',25.00);
-INSERT INTO Products VALUES(7,'Uncle Bob''s Organic Dried Pears',3,7,'12 - 1 lb pkgs.',30.00);
-INSERT INTO Products VALUES(8,'Northwoods Cranberry Sauce',3,2,'12 - 12 oz jars',40.00);
-INSERT INTO Products VALUES(9,'Mishi Kobe Niku',4,6,'18 - 500 g pkgs.',97.00);
-INSERT INTO Products VALUES(10,'Ikura',4,8,'12 - 200 ml jars',31.00);
-INSERT INTO Products VALUES(11,'Queso Cabrales',5,4,'1 kg pkg.',21.00);
-INSERT INTO Products VALUES(12,'Queso Manchego La Pastora',5,4,'10 - 500 g pkgs.',38.00);
-INSERT INTO Products VALUES(13,'Konbu',6,8,'2 kg box',6.00);
+INSERT INTO Products VALUES(6,'Grandma''s Boysenberry Spread',3,2,'12 - 8 oz jars',25);
+INSERT INTO Products VALUES(7,'Uncle Bob''s Organic Dried Pears',3,7,'12 - 1 lb pkgs.',30);
+INSERT INTO Products VALUES(8,'Northwoods Cranberry Sauce',3,2,'12 - 12 oz jars',40);
+INSERT INTO Products VALUES(9,'Mishi Kobe Niku',4,6,'18 - 500 g pkgs.',97);
+INSERT INTO Products VALUES(10,'Ikura',4,8,'12 - 200 ml jars',31);
+INSERT INTO Products VALUES(11,'Queso Cabrales',5,4,'1 kg pkg.',21);
+INSERT INTO Products VALUES(12,'Queso Manchego La Pastora',5,4,'10 - 500 g pkgs.',38);
+INSERT INTO Products VALUES(13,'Konbu',6,8,'2 kg box',6);
 INSERT INTO Products VALUES(14,'Tofu',6,7,'40 - 100 g pkgs.',23.25);
-INSERT INTO Products VALUES(15,'Genen Shouyu',6,2,'24 - 250 ml bottles',15.50);
+INSERT INTO Products VALUES(15,'Genen Shouyu',6,2,'24 - 250 ml bottles',15.5);
 INSERT INTO Products VALUES(16,'Pavlova',7,3,'32 - 500 g boxes',17.45);
 INSERT INTO Products VALUES(17,'Alice Mutton',7,6,'20 - 1 kg tins',39);
-INSERT INTO Products VALUES(18,'Carnarvon Tigers',7,8,'16 kg pkg.',62.50);
-INSERT INTO Products VALUES(19,'Teatime Chocolate Biscuits',8,3,'10 boxes x 12 pieces',9.20);
-INSERT INTO Products VALUES(20,'Sir Rodney''s Marmalade',8,3,'30 gift boxes',81.00);
-INSERT INTO Products VALUES(21,'Sir Rodney''s Scones',8,3,'24 pkgs. x 4 pieces',10.00);
-INSERT INTO Products VALUES(22,'Gustaf''s Knäckebröd',9,5,'24 - 500 g pkgs.',21.00);
-INSERT INTO Products VALUES(23,'Tunnbröd',9,5,'12 - 250 g pkgs.',9.00);
-INSERT INTO Products VALUES(24,'Guaraná Fantástica',10,1,'12 - 355 ml cans',4.50);
-INSERT INTO Products VALUES(25,'NuNuCa Nuß-Nougat-Creme',11,3,'20 - 450 g glasses',14.00);
+INSERT INTO Products VALUES(18,'Carnarvon Tigers',7,8,'16 kg pkg.',62.5);
+INSERT INTO Products VALUES(19,'Teatime Chocolate Biscuits',8,3,'10 boxes x 12 pieces',9.2);
+INSERT INTO Products VALUES(20,'Sir Rodney''s Marmalade',8,3,'30 gift boxes',81);
+INSERT INTO Products VALUES(21,'Sir Rodney''s Scones',8,3,'24 pkgs. x 4 pieces',10);
+INSERT INTO Products VALUES(22,'Gustaf''s Knäckebröd',9,5,'24 - 500 g pkgs.',21);
+INSERT INTO Products VALUES(23,'Tunnbröd',9,5,'12 - 250 g pkgs.',9);
+INSERT INTO Products VALUES(24,'Guaraná Fantástica',10,1,'12 - 355 ml cans',4.5);
+INSERT INTO Products VALUES(25,'NuNuCa Nuß-Nougat-Creme',11,3,'20 - 450 g glasses',14);
 INSERT INTO Products VALUES(26,'Gumbär Gummibärchen',11,3,'100 - 250 g bags',31.23);
-INSERT INTO Products VALUES(27,'Schoggi Schokolade',11,3,'100 - 100 g pieces',43.90);
-INSERT INTO Products VALUES(28,'Rössle Sauerkraut',12,7,'25 - 825 g cans',45.60);
+INSERT INTO Products VALUES(27,'Schoggi Schokolade',11,3,'100 - 100 g pieces',43.9);
+INSERT INTO Products VALUES(28,'Rössle Sauerkraut',12,7,'25 - 825 g cans',45.6);
 INSERT INTO Products VALUES(29,'Thüringer Rostbratwurst',12,6,'50 bags x 30 sausgs.',123.79);
 INSERT INTO Products VALUES(30,'Nord-Ost Matjeshering',13,8,'10 - 200 g glasses',25.89);
-INSERT INTO Products VALUES(31,'Gorgonzola Telino',14,4,'12 - 100 g pkgs',12.50);
-INSERT INTO Products VALUES(32,'Mascarpone Fabioli',14,4,'24 - 200 g pkgs.',32.00);
-INSERT INTO Products VALUES(33,'Geitost',15,4,'500 g',2.50);
-INSERT INTO Products VALUES(34,'Sasquatch Ale',16,1,'24 - 12 oz bottles',14.00);
-INSERT INTO Products VALUES(35,'Steeleye Stout',16,1,'24 - 12 oz bottles',18.00);
-INSERT INTO Products VALUES(36,'Inlagd Sill',17,8,'24 - 250 g jars',19.00);
-INSERT INTO Products VALUES(37,'Gravad lax',17,8,'12 - 500 g pkgs.',26.00);
-INSERT INTO Products VALUES(38,'Côte de Blaye',18,1,'12 - 75 cl bottles',263.50);
-INSERT INTO Products VALUES(39,'Chartreuse verte',18,1,'750 cc per bottle',18.00);
-INSERT INTO Products VALUES(40,'Boston Crab Meat',19,8,'24 - 4 oz tins',18.40);
+INSERT INTO Products VALUES(31,'Gorgonzola Telino',14,4,'12 - 100 g pkgs',12.5);
+INSERT INTO Products VALUES(32,'Mascarpone Fabioli',14,4,'24 - 200 g pkgs.',32);
+INSERT INTO Products VALUES(33,'Geitost',15,4,'500 g',2.5);
+INSERT INTO Products VALUES(34,'Sasquatch Ale',16,1,'24 - 12 oz bottles',14);
+INSERT INTO Products VALUES(35,'Steeleye Stout',16,1,'24 - 12 oz bottles',18);
+INSERT INTO Products VALUES(36,'Inlagd Sill',17,8,'24 - 250 g jars',19);
+INSERT INTO Products VALUES(37,'Gravad lax',17,8,'12 - 500 g pkgs.',26);
+INSERT INTO Products VALUES(38,'Côte de Blaye',18,1,'12 - 75 cl bottles',263.5);
+INSERT INTO Products VALUES(39,'Chartreuse verte',18,1,'750 cc per bottle',18);
+INSERT INTO Products VALUES(40,'Boston Crab Meat',19,8,'24 - 4 oz tins',18.4);
 INSERT INTO Products VALUES(41,'Jack''s New England Clam Chowder',19,8,'12 - 12 oz cans',9.65);
-INSERT INTO Products VALUES(42,'Singaporean Hokkien Fried Mee',20,5,'32 - 1 kg pkgs.',14.00);
-INSERT INTO Products VALUES(43,'Ipoh Coffee',20,1,'16 - 500 g tins',46.00);
+INSERT INTO Products VALUES(42,'Singaporean Hokkien Fried Mee',20,5,'32 - 1 kg pkgs.',14);
+INSERT INTO Products VALUES(43,'Ipoh Coffee',20,1,'16 - 500 g tins',46);
 INSERT INTO Products VALUES(44,'Gula Malacca',20,2,'20 - 2 kg bags',19.45);
-INSERT INTO Products VALUES(45,'Røgede sild',21,8,'1k pkg.',9.50);
-INSERT INTO Products VALUES(46,'Spegesild',21,8,'4 - 450 g glasses',12.00);
-INSERT INTO Products VALUES(47,'Zaanse koeken',22,3,'10 - 4 oz boxes',9.50);
+INSERT INTO Products VALUES(45,'Røgede sild',21,8,'1k pkg.',9.5);
+INSERT INTO Products VALUES(46,'Spegesild',21,8,'4 - 450 g glasses',12);
+INSERT INTO Products VALUES(47,'Zaanse koeken',22,3,'10 - 4 oz boxes',9.5);
 INSERT INTO Products VALUES(48,'Chocolade',22,3,'10 pkgs.',12.75);
-INSERT INTO Products VALUES(49,'Maxilaku',23,3,'24 - 50 g pkgs.',20.00);
+INSERT INTO Products VALUES(49,'Maxilaku',23,3,'24 - 50 g pkgs.',20);
 INSERT INTO Products VALUES(50,'Valkoinen suklaa',23,3,'12 - 100 g bars',16.25);
-INSERT INTO Products VALUES(51,'Manjimup Dried Apples',24,7,'50 - 300 g pkgs.',53.00);
-INSERT INTO Products VALUES(52,'Filo Mix',24,5,'16 - 2 kg boxes',7.00);
-INSERT INTO Products VALUES(53,'Perth Pasties',24,6,'48 pieces',32.80);
+INSERT INTO Products VALUES(51,'Manjimup Dried Apples',24,7,'50 - 300 g pkgs.',53);
+INSERT INTO Products VALUES(52,'Filo Mix',24,5,'16 - 2 kg boxes',7);
+INSERT INTO Products VALUES(53,'Perth Pasties',24,6,'48 pieces',32.8);
 INSERT INTO Products VALUES(54,'Tourtière',25,6,'16 pies',7.45);
-INSERT INTO Products VALUES(55,'Pâté chinois',25,6,'24 boxes x 2 pies',24.00);
-INSERT INTO Products VALUES(56,'Gnocchi di nonna Alice',26,5,'24 - 250 g pkgs.',38.00);
-INSERT INTO Products VALUES(57,'Ravioli Angelo',26,5,'24 - 250 g pkgs.',19.50);
+INSERT INTO Products VALUES(55,'Pâté chinois',25,6,'24 boxes x 2 pies',24);
+INSERT INTO Products VALUES(56,'Gnocchi di nonna Alice',26,5,'24 - 250 g pkgs.',38);
+INSERT INTO Products VALUES(57,'Ravioli Angelo',26,5,'24 - 250 g pkgs.',19.5);
 INSERT INTO Products VALUES(58,'Escargots de Bourgogne',27,8,'24 pieces',13.25);
-INSERT INTO Products VALUES(59,'Raclette Courdavault',28,4,'5 kg pkg.',55.00);
-INSERT INTO Products VALUES(60,'Camembert Pierrot',28,4,'15 - 300 g rounds',34.00);
-INSERT INTO Products VALUES(61,'Sirop d''érable',29,2,'24 - 500 ml bottles',28.50);
-INSERT INTO Products VALUES(62,'Tarte au sucre',29,3,'48 pies',49.30);
-INSERT INTO Products VALUES(63,'Vegie-spread',7,2,'15 - 625 g jars',43.90);
+INSERT INTO Products VALUES(59,'Raclette Courdavault',28,4,'5 kg pkg.',55);
+INSERT INTO Products VALUES(60,'Camembert Pierrot',28,4,'15 - 300 g rounds',34);
+INSERT INTO Products VALUES(61,'Sirop d''érable',29,2,'24 - 500 ml bottles',28.5);
+INSERT INTO Products VALUES(62,'Tarte au sucre',29,3,'48 pies',49.3);
+INSERT INTO Products VALUES(63,'Vegie-spread',7,2,'15 - 625 g jars',43.9);
 INSERT INTO Products VALUES(64,'Wimmers gute Semmelknödel',12,5,'20 bags x 4 pieces',33.25);
 INSERT INTO Products VALUES(65,'Louisiana Fiery Hot Pepper Sauce',2,2,'32 - 8 oz bottles',21.05);
-INSERT INTO Products VALUES(66,'Louisiana Hot Spiced Okra',2,2,'24 - 8 oz jars',17.00);
-INSERT INTO Products VALUES(67,'Laughing Lumberjack Lager',16,1,'24 - 12 oz bottles',14.00);
-INSERT INTO Products VALUES(68,'Scottish Longbreads',8,3,'10 boxes x 8 pieces',12.50);
-INSERT INTO Products VALUES(69,'Gudbrandsdalsost',15,4,'10 kg pkg.',36.00);
-INSERT INTO Products VALUES(70,'Outback Lager',7,1,'24 - 355 ml bottles',15.00);
-INSERT INTO Products VALUES(71,'Fløtemysost',15,4,'10 - 500 g pkgs.',21.50);
-INSERT INTO Products VALUES(72,'Mozzarella di Giovanni',14,4,'24 - 200 g pkgs.',34.80);
-INSERT INTO Products VALUES(73,'Röd Kaviar',17,8,'24 - 150 g jars',15.00);
-INSERT INTO Products VALUES(74,'Longlife Tofu',4,7,'5 kg pkg.',10.00);
+INSERT INTO Products VALUES(66,'Louisiana Hot Spiced Okra',2,2,'24 - 8 oz jars',17);
+INSERT INTO Products VALUES(67,'Laughing Lumberjack Lager',16,1,'24 - 12 oz bottles',14);
+INSERT INTO Products VALUES(68,'Scottish Longbreads',8,3,'10 boxes x 8 pieces',12.5);
+INSERT INTO Products VALUES(69,'Gudbrandsdalsost',15,4,'10 kg pkg.',36);
+INSERT INTO Products VALUES(70,'Outback Lager',7,1,'24 - 355 ml bottles',15);
+INSERT INTO Products VALUES(71,'Fløtemysost',15,4,'10 - 500 g pkgs.',21.5);
+INSERT INTO Products VALUES(72,'Mozzarella di Giovanni',14,4,'24 - 200 g pkgs.',34.8);
+INSERT INTO Products VALUES(73,'Röd Kaviar',17,8,'24 - 150 g jars',15);
+INSERT INTO Products VALUES(74,'Longlife Tofu',4,7,'5 kg pkg.',10);
 INSERT INTO Products VALUES(75,'Rhönbräu Klosterbier',12,1,'24 - 0.5 l bottles',7.75);
-INSERT INTO Products VALUES(76,'Lakkalikööri',23,1,'500 ml',18.00);
-INSERT INTO Products VALUES(77,'Original Frankfurter grüne Soße',12,2,'12 boxes',13.00);
+INSERT INTO Products VALUES(76,'Lakkalikööri',23,1,'500 ml',18);
+INSERT INTO Products VALUES(77,'Original Frankfurter grüne Soße',12,2,'12 boxes',13);
 
 INSERT INTO Orders VALUES(10248,90,5,'1996-07-04',3);
 INSERT INTO Orders VALUES(10249,81,6,'1996-07-05',1);
